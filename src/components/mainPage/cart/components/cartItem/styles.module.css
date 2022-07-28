@@ -1,0 +1,17 @@
+.itemContainer {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 20px;
+}
+
+.cross {
+  width: 10px;
+  height: 10px;
+  border-radius: 20%;
+  transform: rotate(45deg);
+  font-size: 25px;
+  color: red;
+}
+
+.cross:hover {
+  cursor: pointer;
+}

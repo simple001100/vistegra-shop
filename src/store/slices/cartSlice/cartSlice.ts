@@ -3,9 +3,9 @@ import { CartProduct, initialState } from "./state";
 
 const increaseProductCount = (array: Array<CartProduct>, id: string) => {
   return array.map((el) => {
-    if (el.id === id) {
+    if (el.ID === id) {
       el.count += 1;
-      el.totalCost += el.price;
+      el.totalCost += Number(el.PRICE);
     }
     return el;
   });
@@ -18,43 +18,41 @@ const cartSlice = createSlice({
     addToCart(
       state,
       action: PayloadAction<{
-        id: string;
-        name: string;
-        picture: string;
-        price: number;
+        ID: string;
+        NAME: string;
+        PICTURE: string;
+        PRICE: string;
+        TYPE: string;
       }>
     ) {
-      const { id, name, picture, price } = action.payload;
-      const isExists = state.cartProducts.find((el) => el.id === id);
+      const { ID, NAME, PICTURE, PRICE, TYPE } = action.payload;
+      const isExists = state.cartProducts.find((el) => el.ID === ID);
       if (!isExists)
         state.cartProducts.push({
-          id,
-          name,
-          picture,
-          price,
+          ID,
+          NAME,
+          PICTURE,
+          PRICE,
           count: 1,
-          totalCost: price,
+          totalCost: Number(PRICE),
+          TYPE,
         });
       else {
-        state.cartProducts = increaseProductCount(state.cartProducts, id);
+        state.cartProducts = increaseProductCount(state.cartProducts, ID);
       }
     },
     removeFromCart(state, action: PayloadAction<string>) {
       state.cartProducts = state.cartProducts.filter(
-        (el) => el.id !== action.payload
+        (el) => el.ID !== action.payload
       );
     },
-    increaseCount(state, action: PayloadAction<string>) {
-      state.cartProducts = increaseProductCount(
-        state.cartProducts,
-        action.payload
-      );
-    },
-    decreaseCount(state, action: PayloadAction<string>) {
+    setCount(state, action: PayloadAction<{ ID: string; count: number }>) {
+      const { ID, count } = action.payload;
+
       state.cartProducts = state.cartProducts.filter((el) => {
-        if (el.id === action.payload) {
-          el.count -= 1;
-          el.totalCost -= el.price;
+        if (el.ID === ID) {
+          el.count = count;
+          el.totalCost = Number(el.PRICE) * count;
         }
         if (el.count !== 0) return el;
       });
@@ -62,10 +60,5 @@ const cartSlice = createSlice({
   },
 });
 
-export const {
-  addToCart,
-  removeFromCart,
-  increaseCount,
-  decreaseCount: deacreseCount,
-} = cartSlice.actions;
+export const { addToCart, removeFromCart, setCount } = cartSlice.actions;
 export default cartSlice.reducer;

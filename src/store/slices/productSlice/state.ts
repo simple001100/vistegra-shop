@@ -1,5 +1,12 @@
 export type State = {
-  products: [];
+  products: Array<{
+    ID: string;
+    NAME: string;
+    PICTURE: string;
+    PRICE?: string;
+    TYPE: string;
+    SKU?: object;
+  }>;
   isLoading: boolean;
   error: string;
 };

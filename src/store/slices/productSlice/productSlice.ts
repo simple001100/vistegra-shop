@@ -6,7 +6,7 @@ export const getProducts = createAsyncThunk(
   "products/getAllProducts",
   async (_, thunkApi) => {
     try {
-      const response = await axios.get(process.env.API_URL || "");
+      const response = await axios.get(process.env.REACT_APP_API_URL || "");
       return response.data;
     } catch (e) {
       return thunkApi.rejectWithValue("Не удалось загрузить продукты");
