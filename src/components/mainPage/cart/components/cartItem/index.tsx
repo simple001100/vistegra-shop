@@ -30,8 +30,8 @@ export const CartItem = (props: Props) => {
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = Number(e.target.value);
-    if (value || value === 0) {
-      setCountValue(Number(e.target.value));
+    if (value >= 0) {
+      setCountValue(value);
       setTimeout(
         () => setCount({ ID, count: Number(e.target.value) }),
         value === 0 ? 5000 : 0

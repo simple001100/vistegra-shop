@@ -48,14 +48,15 @@ const cartSlice = createSlice({
     },
     setCount(state, action: PayloadAction<{ ID: string; count: number }>) {
       const { ID, count } = action.payload;
-
-      state.cartProducts = state.cartProducts.filter((el) => {
-        if (el.ID === ID) {
-          el.count = count;
-          el.totalCost = Number(el.PRICE) * count;
-        }
-        if (el.count !== 0) return el;
-      });
+      if (count > 0) {
+        state.cartProducts = state.cartProducts.filter((el) => {
+          if (el.ID === ID) {
+            el.count = count;
+            el.totalCost = Number(el.PRICE) * count;
+          }
+          if (el.count !== 0) return el;
+        });
+      }
     },
   },
 });

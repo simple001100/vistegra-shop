@@ -90,7 +90,7 @@ export const ProductItem = (props: Props) => {
               TYPE,
             })
           }
-          disabled={(SKU && !product) || !Number(PRICE)}
+          disabled={SKU && !product}
         >
           КУПИТЬ
         </button>
