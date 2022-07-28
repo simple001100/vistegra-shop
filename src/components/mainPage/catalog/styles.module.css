@@ -1,0 +1,47 @@
+.wrapper {
+  height: 90vh;
+  overflow-y: scroll;
+}
+
+.tableDisplay {
+  display: flex;
+  justify-content: end;
+  padding: 5px;
+}
+
+.displayButton {
+  width: 80px;
+  height: 30px;
+  margin: 5px;
+  border: 1px solid #177bc5;
+  background-color: #fff;
+  color: #177bc5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tableDisplay > div:hover {
+  cursor: pointer;
+}
+
+.buttonActive {
+  background-color: #177bc5;
+  color: #fff;
+}
+
+.cardStyle {
+  min-height: 150px;
+  background-color: #fff;
+}
+
+.table {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  background-color: #eef3f9;
+}
+
+.list {
+  grid-template-columns: 1fr;
+}

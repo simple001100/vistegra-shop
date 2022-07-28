@@ -1,0 +1,72 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.textContainerList {
+  flex-direction: row;
+  align-items: center;
+}
+
+.textContainerList span {
+  margin-right: 10px;
+}
+
+.cardList {
+  flex-direction: row;
+}
+
+.productName {
+  font-weight: bold;
+}
+
+.productPrice {
+  color: #177bc5;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list {
+  flex-direction: row;
+}
+
+.select {
+  width: 50%;
+}
+
+.button {
+  width: 200px;
+  height: 60px;
+  margin: 10px;
+  font-weight: bold;
+  color: #177bc5;
+  background-color: #fff;
+  border: 1px solid #177bc5;
+}
+
+.button:hover {
+  background-color: #177bc5;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.button:disabled {
+  background-color: gray;
+  color: #fff;
+  border: 1px solid gray;
+}
